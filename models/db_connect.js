@@ -1,18 +1,18 @@
-var Sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 
 
-var sequelize = new Sequelize(process.env.DB, process.env.USER, process.env.PASSWORD, {
+const sequelize = new Sequelize(process.env.DB, process.env.USER, process.env.PASSWORD, {
   host: process.env.HOST,
   dialect: process.env.DIALECT
 });
 
-var Funcionarios = sequelize.define('funcionarios', {
-  Nome: Sequelize.STRING,
-  Idade: Sequelize.INTEGER,
-  Cargo: Sequelize.STRING
+const Funcionarios = sequelize.define('funcionarios', {
+  nome: Sequelize.STRING,
+  idade: Sequelize.INTEGER,
+  cargo: Sequelize.STRING
 });
 
-var db ={};
+const db ={};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.funcionarios = Funcionarios;

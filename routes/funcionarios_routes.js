@@ -1,12 +1,34 @@
-module.exports = app =>{
-    var funcionarios = require("../controllers/funcionarios_controller.js");
-    var router = require("express").Router();
+module.exports = app => {
+    const funcionarios = require("../controllers/funcionarios_controller.js");
+    const router = require("express").Router();
+    const { body } = require("express-validator");
 
-    router.post("/", funcionarios.create);
+    router.post("/", [
+        body('nome')
+            .isString()
+            .trim(),
+        body('idade')
+            .isNumeric(),
+        body('cargo')
+            .isString()
+            .trim(),
+    ], funcionarios.create);
 
     router.delete("/:id", funcionarios.delete);
 
-    router.put("/:id", funcionarios.update);
+    router.put("/:id",[
+        body('nome')
+            .optional()
+            .isString()
+            .trim(),
+        body('idade')
+            .optional() 
+            .isNumeric(), 
+        body('cargo')
+            .optional()
+            .isString()
+            .trim(),
+    ], funcionarios.update);
 
     router.get("/", funcionarios.findALL);
 
