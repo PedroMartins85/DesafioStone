@@ -4,5 +4,13 @@ module.exports = app =>{
 
     router.post("/", funcionarios.create);
 
+    router.delete("/:id", funcionarios.delete);
+
+    router.put("/:id", funcionarios.update);
+
+    router.get("/", funcionarios.findALL);
+
+    router.get("/:id", funcionarios.findID);
+
     app.use("/funcionarios", router);
 }

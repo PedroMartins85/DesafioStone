@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+require('dotenv-safe').config();
 var Sequelize = require('sequelize');
 app.use(express.json());
 
