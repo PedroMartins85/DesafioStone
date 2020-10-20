@@ -1,10 +1,9 @@
-var dbConfig = require("../config/db_config.js");
 var Sequelize = require("sequelize");
 
 
-var sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-  host: dbConfig.HOST,
-  dialect: dbConfig.dialect
+var sequelize = new Sequelize(process.env.DB, process.env.USER, process.env.PASSWORD, {
+  host: process.env.HOST,
+  dialect: process.env.DIALECT
 });
 
 var Funcionarios = sequelize.define('funcionarios', {
