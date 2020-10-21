@@ -1,11 +1,6 @@
 const db = require("../models/db_connect.js");
 const { validationResult } = require('express-validator');
-const winston = require('winston');
-const logger = winston.createLogger({
-    transports: [
-        new winston.transports.Console()
-    ]
-});
+const logger = require("../helpers/logger.js");
 
 const Funcionarios = db.funcionarios;
 
@@ -16,6 +11,7 @@ exports.create = (req, res) =>{
         res.status(422).send({
             message: errors.errors[0].msg
           });
+          logger.error('Erro de validação de entrada para criar novo funcionario');
           return;
     }
     
